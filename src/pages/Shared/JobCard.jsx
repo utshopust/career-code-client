@@ -107,7 +107,7 @@ const JobCard = ({ job }) => {
           className="btn bg-blue-600 hover:bg-blue-500 text-white border-none px-6 rounded-lg 
                      transition-all duration-300 shadow-md hover:shadow-blue-500/40"
         >
-          Apply Now
+          Show Details
         </button>
       </Link>
     </div>

@@ -1,6 +1,7 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
+import logo from "../../assets/logo/logo.png";
 const links = (
   <>
     <li>
@@ -50,7 +51,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Career Code Client</a>
+        <Link to="/"><img src={logo} alt="logo" className="h-10 w-auto object-contain brightness-125 drop-shadow-[0_0_6px_rgba(0,153,255,0.4)]" /></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
