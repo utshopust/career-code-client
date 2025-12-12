@@ -121,7 +121,7 @@
 
 
 import React from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -136,6 +136,7 @@ const JobDetails = () => {
 
   const {
     title,
+    _id,
     company,
     company_logo,
     location,
@@ -220,12 +221,14 @@ const JobDetails = () => {
         </div>
 
         {/* Apply Button as Email Link */}
-        <a
+        {/* <a
           href={`mailto:${hr_email}?subject=Application for ${encodeURIComponent(title)}`}
           className="w-full block mt-8 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg text-center transition"
         >
           Apply Now
-        </a>
+        </a> */}
+
+        <Link to={`/jobApply/${_id}`}><button className="btn btn-primary">Apply Now</button></Link>
       </div>
 
     </div>
