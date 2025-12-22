@@ -2,26 +2,33 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 import logo from "../../assets/logo/logo.png";
-const links = (
-  <>
-    <li>
-      <NavLink to="/">Home</NavLink>
-    </li>
-  </>
-);
 
 const Navbar = () => {
   const { user, signOutUser } = use(AuthContext);
 
-  const handleSignOut = ()=>{
+  const handleSignOut = () => {
     signOutUser()
-    .then(res=>{
-      console.log('user Sign Out',res);
-    })
-    .catch(error=>{
-      console.log(error);
-    })
-  }
+      .then((res) => {
+        console.log("user Sign Out", res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const links = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/myApplications">My Applications</NavLink>
+          </li>
+        </>
+      )}
+    </>
+  );
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -51,24 +58,32 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/"><img src={logo} alt="logo" className="h-10 w-auto object-contain brightness-125 drop-shadow-[0_0_6px_rgba(0,153,255,0.4)]" /></Link>
+        <Link to="/">
+          <img
+            src={logo}
+            alt="logo"
+            className="h-10 w-auto object-contain brightness-125 drop-shadow-[0_0_6px_rgba(0,153,255,0.4)]"
+          />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        {
-          user ? <button onClick={handleSignOut} className="btn">Sign Out</button> :
-
+        {user ? (
+          <button onClick={handleSignOut} className="btn">
+            Sign Out
+          </button>
+        ) : (
           <>
-          <NavLink className="btn" to="/register">
-          Register
-        </NavLink>
-        <NavLink className="btn" to="/signIn">
-          SignIn
-        </NavLink>
+            <NavLink className="btn" to="/register">
+              Register
+            </NavLink>
+            <NavLink className="btn" to="/signIn">
+              SignIn
+            </NavLink>
           </>
-        }
+        )}
       </div>
     </div>
   );
