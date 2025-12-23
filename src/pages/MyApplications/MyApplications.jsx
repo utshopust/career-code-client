@@ -16,9 +16,9 @@ const MyApplications = () => {
   return (
     <div>
       <h2 className="text-3xl font-bold text-center my-8">
-        My Applications Page
+        My Applications 
       </h2>
-      <ApplicationStats></ApplicationStats>
+      {/* <ApplicationStats></ApplicationStats> */}
       <Suspense
         fallback={<span className="loading loading-ring loading-xl"></span>}
       >

@@ -65,7 +65,8 @@ const JobApplicationRow = ({ application, index }) => {
 
   return (
     <>
-      <tr className="hover">
+      {/* Desktop Row */}
+      <tr className="hover hidden md:table-row">
         <th>{index + 1}</th>
 
         {/* Company */}
@@ -92,10 +93,10 @@ const JobApplicationRow = ({ application, index }) => {
         </td>
 
         {/* Applicant */}
-        <td className="text-sm">{applicant}</td>
+        <td className="text-sm break-all">{applicant}</td>
 
         {/* Action */}
-        <th>
+        <th className="text-right">
           <button
             className="btn btn-outline btn-xs"
             onClick={() => document.getElementById(modalId).showModal()}
@@ -105,37 +106,84 @@ const JobApplicationRow = ({ application, index }) => {
         </th>
       </tr>
 
+      {/* Mobile Card */}
+      <tr className="md:hidden">
+        <td colSpan="5">
+          <div className="border rounded-lg p-4 space-y-3">
+            <div className="flex items-center gap-3">
+              <img
+                src={company_logo}
+                alt={company}
+                className="w-12 h-12 rounded-lg"
+              />
+              <div>
+                <p className="font-semibold">{company}</p>
+                <p className="text-sm text-gray-500">{location}</p>
+              </div>
+            </div>
+
+            <div>
+              <p className="font-medium">{title}</p>
+              <span className="badge badge-ghost badge-sm">{jobType}</span>
+            </div>
+
+            <p className="text-sm break-all">{applicant}</p>
+
+            <button
+              className="btn btn-outline btn-sm w-full"
+              onClick={() => document.getElementById(modalId).showModal()}
+            >
+              View Details
+            </button>
+          </div>
+        </td>
+      </tr>
+
       {/* Modal */}
-      <dialog id={modalId} className="modal">
+      <dialog id={modalId} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box max-w-2xl">
-          <h3 className="font-bold text-lg mb-2">{title}</h3>
-          <p className="text-sm text-gray-500 mb-4">
+          <h3 className="font-bold text-lg mb-1">{title}</h3>
+          <p className="text-sm text-gray-500 mb-3">
             {company} · {location} · {jobType}
           </p>
 
-          <p className="mb-4 text-sm">{description}</p>
+          <p className="text-sm mb-4">{description}</p>
 
           <div className="divider">Applicant</div>
 
-          <p className="text-sm mb-2">
+          <p className="text-sm mb-3 break-all">
             <strong>Email:</strong> {applicant}
           </p>
 
-          <div className="flex gap-3 mt-4">
-            <a href={resume} target="_blank" className="btn btn-sm btn-primary">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href={resume}
+              target="_blank"
+              className="btn btn-primary btn-sm w-full sm:w-auto"
+            >
               Resume
             </a>
-            <a href={github} target="_blank" className="btn btn-sm">
+            <a
+              href={github}
+              target="_blank"
+              className="btn btn-sm w-full sm:w-auto"
+            >
               GitHub
             </a>
-            <a href={linkedin} target="_blank" className="btn btn-sm">
+            <a
+              href={linkedin}
+              target="_blank"
+              className="btn btn-sm w-full sm:w-auto"
+            >
               LinkedIn
             </a>
           </div>
 
           <div className="modal-action">
-            <form method="dialog">
-              <button className="btn btn-sm">Close</button>
+            <form method="dialog" className="w-full sm:w-auto">
+              <button className="btn btn-sm w-full sm:w-auto">
+                Close
+              </button>
             </form>
           </div>
         </div>
