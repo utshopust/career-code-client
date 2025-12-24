@@ -22,7 +22,7 @@ const MyApplications = () => {
       <Suspense
         fallback={<span className="loading loading-ring loading-xl"></span>}
       >
-        <ApplicationList
+        <ApplicationList 
         myApplicationsPromise={myApplicationsPromise(user.email)}
         ></ApplicationList>
       </Suspense>

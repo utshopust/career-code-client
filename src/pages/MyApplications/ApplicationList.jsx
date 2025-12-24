@@ -45,7 +45,7 @@ const ApplicationList = ({ myApplicationsPromise }) => {
   const applications = use(myApplicationsPromise);
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 ">
       <h3 className="text-2xl font-semibold mb-4">
         Total Applied ({applications.length})
       </h3>

@@ -24,7 +24,7 @@ import {
 
 const AddJob = () => {
   return (
-    <div className="max-w-5xl mx-auto p-10 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
+    <div className="max-w-5xl mx-auto p-10 bg-white dark:bg-gray-900 rounded-2xl shadow-lg mb-5">
       <h2 className="text-3xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">
         Add New Job
       </h2>
